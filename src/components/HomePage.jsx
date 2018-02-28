@@ -6,7 +6,7 @@ import Spinner from './Spinner/Spinner';
 const HomePage =() => (
   <div>
     <div>Home Page</div>
-    <Link to="/a"> A </Link>
+    <Link to="/about"> About </Link>
     <Spinner />
   </div>
 );

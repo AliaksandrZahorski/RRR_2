@@ -5,8 +5,4 @@ const store = combineReducers({
   blogs
 });
 
-const root = (state, action) => {
-  return store(state, action);
-};
-
-export default root;
+export default store;

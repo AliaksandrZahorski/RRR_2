@@ -6,19 +6,21 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import store from './store/store';
+import App from './components/App';
 
-import PrimaryLayout from './components/PrimaryLayout';
-
-class App extends React.Component {
+class AppContainer extends React.Component {
   render () {
     return(
       <Provider store={store}>
         <BrowserRouter>
-          <PrimaryLayout />
+          <App />
         </BrowserRouter>
       </Provider>
     );
   }
 }
 
-render(<App/>, document.getElementById('app'));
+render(
+  <AppContainer />
+  , document.getElementById('app')
+);
