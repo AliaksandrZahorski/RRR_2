@@ -1,8 +1,9 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require ('extract-text-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'public');
-var APP_DIR = path.resolve(__dirname, 'src/app');
+var APP_DIR = path.resolve(__dirname, 'src');
 
 var config = {
   entry: APP_DIR + '/index.jsx',
@@ -21,9 +22,25 @@ var config = {
         test : /\.js|jsx?/,
         include : APP_DIR,
         loader : 'babel-loader'
-      }
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+            },
+          ],
+          publicPath: '/',
+        }
+        ),
+      }, 
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('bundle.css'),
+  ]
 };
 
 module.exports = config;

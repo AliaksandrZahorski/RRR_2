@@ -4,6 +4,9 @@ import { Route } from 'react-router-dom';
 import HomePage from './HomePage.jsx';
 import UsersPage from './UsersPage.jsx';
 
+
+import './PrimaryLayout.css';
+
 const PrimaryLayout = () => (
   <div className="primary-layout">
     <header>
