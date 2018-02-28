@@ -2,14 +2,21 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import PrimaryLayout from './components/PrimaryLayout.jsx';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import store from './store/store';
+
+import PrimaryLayout from './components/PrimaryLayout';
 
 class App extends React.Component {
   render () {
     return(
-      <BrowserRouter>
-        <PrimaryLayout />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <PrimaryLayout />
+        </BrowserRouter>
+      </Provider>
     );
   }
 }

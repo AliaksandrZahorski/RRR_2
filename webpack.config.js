@@ -16,6 +16,13 @@ var config = {
     inline: true,
     historyApiFallback: true,
   },
+  resolve: {
+    modules: [
+      path.join(__dirname, 'node_modules'),
+      path.join(__dirname, APP_DIR),
+    ], 
+    extensions: ['.js', '.jsx'],
+  },
   module : {
     loaders : [
       {

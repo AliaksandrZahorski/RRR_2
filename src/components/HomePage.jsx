@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Spinner from './Spinner/Spinner.jsx';
+import Spinner from './Spinner/Spinner';
 
 const HomePage =() => (
   <div>
