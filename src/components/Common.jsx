@@ -1,5 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Common = () => <p> common1212121 </p>;
+import { addRecord, addAsyncRecord } from '../actions';
 
-export default Common;
+
+const mapStateToProps = ({ blogs }) => ({
+  blogs
+});
+
+class Common extends React.Component {
+  componentDidMount() {
+    const record = {
+      author: "none",
+      title: "zzz",
+      text: "qq",
+    };
+
+    this.props.addRecord(record);
+    this.props.addAsyncRecord(record);
+  }
+  render() {
+    const { blogs } = this.props;
+    return (
+        blogs.map(b => <div key={b.id}> {b.id} {b.title} </div>)
+    );
+  }
+ }
+
+export default connect(
+  mapStateToProps,
+  {
+    addRecord,
+    addAsyncRecord
+  }
+)(Common);
