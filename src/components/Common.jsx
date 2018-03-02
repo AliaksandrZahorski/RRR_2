@@ -17,7 +17,7 @@ class Common extends React.Component {
     };
 
     this.props.addRecord(record);
-    this.props.addAsyncRecord(record);
+    // this.props.addAsyncRecord(record);
   }
   render() {
     const { blogs } = this.props;

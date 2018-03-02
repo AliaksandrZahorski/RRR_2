@@ -1,13 +1,49 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Header = ({ login }) => (
-  <form name="loginform" onSubmit={login}>
-    <label>User name</label>
-    <input type="text" name="user" placeholder="username" />
-    <label>Password</label>
-    <input type="password" name="password" placeholder="password" />
-    <input type="submit" value="Login" />
-  </form>
-);
+import LoginForm from './LoginForm/LoginForm';
+import LogoutForm from './LogoutForm/LogoutForm';
+import { loginUser, logoutUser } from '../../actions';
 
-export default Header;
+import './Header.css';
+
+const mapStateToProps = ({ users }) => ({
+  name: users.name
+});
+
+const mapDispatchToProps = dispatch => ({
+  onHandleLogin(user) {
+    dispatch(loginUser(user));
+  },
+  onHandleLogout() {
+    dispatch(logoutUser());
+  }
+});
+
+const Header = ({ onHandleLogin, onHandleLogout, name }) => {
+  const handleLogin = event => {
+    event.preventDefault();
+    const user = {
+      name: event.target.user.value,
+      password: event.target.password.value,
+    };
+    onHandleLogin(user);
+  };
+  const handleLogout = event => {
+    event.preventDefault();
+    onHandleLogout();
+  };
+
+  return (
+    <div className="header">
+      {
+        name ?
+        <LogoutForm logout={handleLogout} name={name} />
+        :
+        <LoginForm login={handleLogin} />
+      }
+    </div>
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

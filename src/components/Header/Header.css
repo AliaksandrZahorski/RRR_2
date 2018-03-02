@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.header label, .header input {
+  margin-right: 10px;
+}
