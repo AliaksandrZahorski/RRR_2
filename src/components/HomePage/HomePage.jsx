@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Spinner from './Spinner/Spinner';
+import BlogContainer from '../BlogContainer/BlogContainer';
 
 const HomePage =() => (
   <div>
-    <div>Home Page</div>
     <Link to="/about"> About </Link>
-    <Spinner />
+    <BlogContainer />
   </div>
 );
 

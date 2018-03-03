@@ -1,0 +1,9 @@
+.new_blog {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.new_blog label, .new_blog input {
+  margin-right: 10px;
+}

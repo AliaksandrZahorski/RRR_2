@@ -1,16 +1,10 @@
 import {
   ADD_RECORD,
+  GET_BLOGS,
   DELETE_RECORD
 } from '../actions';
 
-const initialState = [
-  {
-    id: 0,
-    author: 'Author',
-    title: 'title',
-    text: 'Sample text',
-  },
-];
+const initialState = [];
 
 const blogs = (state = initialState, action) => {
   switch (action.type) {
@@ -18,14 +12,18 @@ const blogs = (state = initialState, action) => {
       return [
         ...state,
         {
-          id: action.id,
+          _id: action._id,
           author: action.author,
           title: action.title,
           text: action.text,
         }
       ];
+    case GET_BLOGS:
+      return [
+        ...action.blogs
+      ];
     case DELETE_RECORD:
-      return state.filter(s => s.id !== action.id);
+      return state.filter(s => s._id !== action.id);
 
     default:
       return state;
